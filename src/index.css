@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.page-links ul li a {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+}
+
+.page-links ul li a:hover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -15px;
+  width: 100%;
+  height: 3px;
+  background-color: black;
+}
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 50px 20px;
+  position: relative;
+}
+
+.hero-section h1 {
+  font-size: 5.5rem;
+  font-weight: 550;
+  line-height: 0.9;
+  margin: 0;
+}
+
+.hero-section h1.highlight {
+  color: #0057ff;
+}
+
+.hero-section p {
+  font-size: 1.5rem;
+  color: #6c757d;
+  margin: 20px 0 0 ;
+}
+
+.hero-section .buttons {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.hero-section .btn {
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.hero-section .btn-primary {
+  background-color: #0057ff;
+  color: white;
+}
+
+.hero-section .btn-secondary {
+  background-color: white;
+  color: #0057ff;
+  border: 2px solid #0057ff;
+}
+
+.hero-section .btn:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Shadow effect on hover */
+  
+}
+
+.tags-search {
+  background: white;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.tags-search button {
+  background: white;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: bold;
+  
+  background: none;
+  border-radius:5px;
+  cursor: pointer;
+  padding: 0;
+  margin:1;
+}
+
+.tags-search button:hover {
+  color: #000;
+}
+
+.tags-search button .mr-2 {
+  margin-right: 0.5rem;
+}
+
+.filter-section {
+  transition: box-shadow 0.3s, margin-right 0.3s;
+}
+
+.filter-section.shadow-lg {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-right: 0; /* Removes the margin when shadow is applied */
+}
+
+.separator {
+  border-color: #e0e0e0; /* Adjust color as needed */
+  height: auto; /* Adjust height as needed */
+}
+
+.behance-tools .tools-item {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.behance-tools {
+  position: absolute;
+  z-index: 10;
+}
+
+.search-area {
+  position: relative;
+}
+
+
+.bg-overlay{
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  background:rgb(0 0 0 / 40%);
+  transition: 0.25s linear all;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.category-item{
+  transition: 0.25s linear all;
+}
+
+.category-item:hover .bg-overlay{
+  visibility: visible;
+  transition: 0.25s linear all;
+}
+
+.category-item:hover .patch{
+  visibility: visible;
+  transition: 0.25s linear all;
+}
+
+.category-item:hover .save-file{
+  visibility: visible;
+  transition: 0.25s linear all;
+}
+
+.save-file,.patch{
+  visibility: hidden;
+}
+
+.left-foot ul {
+  list-style: none; /* Remove default list styles */
+  padding: 0; /* Remove default padding */
+}
+
+.left-foot li {
+  display: inline-block; /* Display list items in a single line */
+  margin-right: 10px; /* Adjust spacing between list items */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.left-foot li:hover {
+  font-weight: bold; /* Make font bold on hover */
+}
+
+.left-foot a {
+  text-decoration: none; /* Remove underline from links */
+  color: inherit; /* Inherit text color */
+}
+
+.font-medium {
+  font-weight: 500; /* Set font weight to medium */
+}
+
+.adobe-btn {
+  padding: 5px 10px; /* Adjust padding for Adobe button */
+  border-radius: 5px; /* Apply border radius to Adobe button */
+}
+
+.adobe-btn:hover {
+  opacity: 0.7; /* Reduce opacity on hover for Adobe button */
+}
