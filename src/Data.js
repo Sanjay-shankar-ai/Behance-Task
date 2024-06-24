@@ -145,7 +145,7 @@ export const behanceItem = [
         featureTxt: 'Impression Landscape ground',
         feLike: '151',
         felikeIcons: <AiFillLike />,
-        feWatch: '9580',
+        feWatch: '9560',
         fewatchIcon: <AiTwotoneEye />,
         feUser: 'Reshoka'
     },

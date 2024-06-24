@@ -14,10 +14,11 @@ const Heroine = ({ setSortType }) => {
   const searchRef = useRef(null);
 
   useEffect(() => {
-    // Function to handle clicks outside the search box
+    // Function to handle clicks outside the search box and filter panel
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
         setShowSuggestions(false);
+        setFilterVisible(false);
       }
     };
 
@@ -37,6 +38,7 @@ const Heroine = ({ setSortType }) => {
 
   const handleSearchFocus = () => {
     setShowSuggestions(true);
+    setFilterVisible(false); // Hide filter when search bar is focused
   };
 
   const handleSearchChange = (event) => {
@@ -109,9 +111,9 @@ const Heroine = ({ setSortType }) => {
               </div>
             )}
           </div>
-          <div className='flex-1 ml-2'>
-            <div className='search-box w-full border-2 rounded-full bg-[#f9f9f9] overflow-hidden flex items-center'>
-              <div className='input-box relative w-full' ref={searchRef}>
+          <div className='flex-1 ml-2 relative' ref={searchRef}>
+            <div className={`search-box w-full border-2 rounded-full bg-[#f9f9f9] overflow-hidden flex items-center ${showSuggestions ? 'expanded' : ''}`}>
+              <div className='input-box relative w-full'>
                 <input 
                   type='text' 
                   placeholder='Search the creative world at work' 
@@ -125,11 +127,25 @@ const Heroine = ({ setSortType }) => {
                 </div>
               </div>
               <div className='tags-search px-5 py-3'>
-                <button className='flex items-center bg-white rounded-full  text-[#777] font-bold text-sm px-4 py-2'>
+                <button className='flex items-center bg-white rounded-full text-[#777] font-bold text-sm px-4 py-2'>
                   <BsImage className='mr-1' /> Search by image
                 </button>
               </div>
             </div>
+            {/* Display search suggestions only when showSuggestions is true */}
+            {showSuggestions && searchSuggestions.length > 0 && (
+              <div className='search-suggestions absolute w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg'>
+                {searchSuggestions.map((item, index) => (
+                  <div 
+                    key={index} 
+                    className='suggestion-item px-4 py-2 cursor-pointer hover:bg-gray-200'
+                    onClick={() => handleSelectSuggestion(item)}
+                  >
+                    {highlightMatchedText(item.featureTxt, searchTerm)}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
           <div className='Recm-items flex items-center ml-4'>
             <span className='text-xs font-bold text-[#333] mr-2'>Sort</span>
@@ -146,20 +162,6 @@ const Heroine = ({ setSortType }) => {
             </div>
           </div>
         </div>
-        {/* Display search suggestions only when showSuggestions is true */}
-        {showSuggestions && searchSuggestions.length > 0 && (
-          <div className='search-suggestions'>
-            {searchSuggestions.map((item, index) => (
-              <div 
-                key={index} 
-                className='suggestion-item'
-                onClick={() => handleSelectSuggestion(item)}
-              >
-                {highlightMatchedText(item.featureTxt, searchTerm)}
-              </div>
-            ))}
-          </div>
-        )}
       </div>
     </header>
   );
